@@ -1,0 +1,110 @@
+<div class="menubar" cdkMenuBar>
+  <button class="menu-bar-item" cdkMenuItem [cdkMenuTriggerFor]="file">File</button>
+  <button class="menu-bar-item" cdkMenuItem [cdkMenuTriggerFor]="edit">Edit</button>
+  <button class="menu-bar-item" cdkMenuItem [cdkMenuTriggerFor]="format">Format</button>
+</div>
+
+<ng-template cdkMenuPanel #file="cdkMenuPanel">
+  <div class="menu" cdkMenu [cdkMenuPanel]="file">
+    <button class="menu-item" cdkMenuItem>Share</button>
+    <hr />
+    <button class="menu-item" cdkMenuItem [cdkMenuTriggerFor]="new">
+      New
+      <mat-icon aria-hidden="false">arrow_right</mat-icon>
+    </button>
+    <button class="menu-item" cdkMenuItem>Open</button>
+    <button class="menu-item" cdkMenuItem>Make a Copy</button>
+    <hr />
+    <button class="menu-item" cdkMenuItem [cdkMenuTriggerFor]="download">
+      Download
+      <mat-icon aria-hidden="false">arrow_right</mat-icon>
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #edit="cdkMenuPanel" cdkMenuPanel>
+  <div class="menu" cdkMenu [cdkMenuPanel]="file">
+    <button class="menu-item" cdkMenuItem>Undo</button>
+    <button class="menu-item" cdkMenuItem>Redo</button>
+    <hr />
+    <button class="menu-item" cdkMenuItem>Cut</button>
+    <button class="menu-item" cdkMenuItem>Copy</button>
+    <button class="menu-item" cdkMenuItem>Paste</button>
+  </div>
+</ng-template>
+
+<ng-template #format="cdkMenuPanel" cdkMenuPanel>
+  <div class="menu" cdkMenu [cdkMenuPanel]="format">
+    <div class="menu-group" cdkMenuGroup>
+      <button
+        [checked]="_bold"
+        id="bf"
+        class="menu-item"
+        (clicked)="onToggleCheckbox($event)"
+        cdkMenuItemCheckbox
+      >
+        Bold
+      </button>
+      <button
+        [checked]="_italic"
+        id="if"
+        class="menu-item"
+        (clicked)="onToggleCheckbox($event)"
+        cdkMenuItemCheckbox
+      >
+        Italic
+      </button>
+    </div>
+    <hr />
+    <div class="menu-group" cdkMenuGroup>
+      <button
+        [checked]="isRadioChecked('small')"
+        id="small"
+        class="menu-item"
+        (clicked)="onToggleRadio($event)"
+        cdkMenuItemRadio
+      >
+        Small
+      </button>
+      <button
+        [checked]="isRadioChecked('normal')"
+        id="normal"
+        class="menu-item"
+        (clicked)="onToggleRadio($event)"
+        cdkMenuItemRadio
+      >
+        Normal
+      </button>
+      <button
+        [checked]="isRadioChecked('large')"
+        id="large"
+        class="menu-item"
+        (clicked)="onToggleRadio($event)"
+        cdkMenuItemRadio
+      >
+        Big
+      </button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #new="cdkMenuPanel" cdkMenuPanel>
+  <div class="menu" cdkMenu [cdkMenuPanel]="new">
+    <button (cdkMenuItemTriggered)="onNewDocument.emit()" class="menu-item" cdkMenuItem>
+      Document
+    </button>
+    <button class="menu-item" cdkMenuItem>From template</button>
+    <hr />
+    <button class="menu-item" cdkMenuItem>Spreadsheet</button>
+    <button class="menu-item" cdkMenuItem>Presentation</button>
+    <button class="menu-item" cdkMenuItem>Form</button>
+  </div>
+</ng-template>
+
+<ng-template #download="cdkMenuPanel" cdkMenuPanel>
+  <div class="menu" cdkMenu [cdkMenuPanel]="download">
+    <button class="menu-item" cdkMenuItem>Microsoft Word</button>
+    <button class="menu-item" cdkMenuItem>PDF</button>
+    <button class="menu-item" cdkMenuItem>Plain text</button>
+  </div>
+</ng-template>
