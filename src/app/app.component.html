@@ -1,11 +1,11 @@
-<div style="padding: 20px;">
+<div class="container">
   <header>
-    <div style="display: flex;">
-      <mat-icon style="font-size: 50px; margin-right: 20px; color: #433aff;" aria-hidden="false">
+    <div class="flex">
+      <mat-icon class="app-icon" aria-hidden="false">
         text_snippet
       </mat-icon>
-      <div style="display: flex; flex-direction: column; margin-left: 30px;">
-        <div style="display: flex;">
+      <div class="bar-container">
+        <div class="flex">
           <input #input value="Intern Summer Project" class="file-name" type="text" />
           <mat-icon class="icon">star_border</mat-icon>
           <mat-icon class="icon">cloud_done</mat-icon>
@@ -20,7 +20,7 @@
     </div>
   </header>
 
-  <main style="padding-top: 100px;">
+  <main>
     <textarea #textarea [class]="getTextAreaClasses()">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quaerat impedit voluptates perferendis odio quibusdam, dolor iste magnam eveniet maxime facere repudiandae quo modi accusamus, neque, quidem maiores? Cupiditate, deserunt.
     </textarea>

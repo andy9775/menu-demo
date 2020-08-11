@@ -23,7 +23,6 @@ export class AppComponent {
 
   size(s: string) {
     this._fontSize = s;
-    console.log(s);
   }
 
   getTextAreaClasses() {
