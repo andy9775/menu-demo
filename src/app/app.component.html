@@ -20,9 +20,25 @@
     </div>
   </header>
 
-  <main>
-    <textarea #textarea [class]="getTextAreaClasses()">
+  <main [cdkContextMenuTriggerFor]="outer_menu">
+    <textarea [cdkContextMenuTriggerFor]="inner_menu" #textarea [class]="getTextAreaClasses()">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quaerat impedit voluptates perferendis odio quibusdam, dolor iste magnam eveniet maxime facere repudiandae quo modi accusamus, neque, quidem maiores? Cupiditate, deserunt.
     </textarea>
   </main>
 </div>
+
+<ng-template cdkMenuPanel #outer_menu="cdkMenuPanel">
+  <div cdkMenu class="context-menu" [cdkMenuPanel]="outer_menu">
+    <button class="menu-item" cdkMenuItem>Undo</button>
+    <button class="menu-item" cdkMenuItem>Redo</button>
+  </div>
+</ng-template>
+
+<ng-template cdkMenuPanel #inner_menu="cdkMenuPanel">
+  <div cdkMenu class="context-menu" [cdkMenuPanel]="inner_menu">
+    <button class="menu-item" (cdkMenuItemTriggered)="delete()" cdkMenuItem>Delete Text</button>
+    <hr />
+    <button class="menu-item" cdkMenuItem>Undo</button>
+    <button class="menu-item" cdkMenuItem>Redo</button>
+  </div>
+</ng-template>

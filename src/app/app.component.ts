@@ -41,4 +41,8 @@ export class AppComponent {
     this.input.nativeElement.value = 'NEW DOCUMENT';
     this.textarea.nativeElement.value = '';
   }
+
+  delete() {
+    this.textarea.nativeElement.value = '';
+  }
 }
